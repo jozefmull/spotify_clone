@@ -1,0 +1,35 @@
+.slide{
+    height: 160px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+}
+.slide:hover{
+    cursor: pointer;
+}
+.slide > h2{
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    color: #fff;
+    transition: all .3s ease;
+    cursor: pointer;
+}
+
+.slide > img{
+    position: absolute;
+    width: 200px;
+    height: 125px;
+    left: -25%;
+    bottom: -50px;
+    transform: rotate(-30deg);
+    border-radius: 10px;
+    transition: all .3s ease;
+}
+
+.slide:hover > img{
+    transform: rotate(-35deg);
+}
+.slide:hover > h2{
+    right: 20px;
+}

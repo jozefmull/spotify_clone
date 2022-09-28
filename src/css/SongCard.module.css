@@ -1,0 +1,70 @@
+.card{
+    background-color: #181818;
+    padding: 16px;
+    position: relative;
+    width: 100%;
+    max-width: calc(100% / 6 - 20px);
+    border-radius: 7px;
+    color: #fff;
+    transition: all .3s ease;
+    cursor:pointer;
+}
+
+.card:hover{
+    background-color: #282828;
+}
+.card > div{
+    position: relative;
+}
+.card > div > img {
+    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+}
+.card > div > .play_icon{
+    position: absolute;
+    border-radius: 50%;
+    padding: 10px;
+    width: 52px;
+    height: 52px;
+    background-color: #1ed760;
+    color: #000;
+    bottom: -7px;
+    right: -7px;
+    cursor: pointer;
+    transition: all .3s ease;
+    transform: translateY(10px);
+    opacity: 0;
+}
+.card > div > .play_icon:hover{
+    background-color: #1ab550;
+}
+.card > span {
+    color: #a7a7a7;
+    line-height: 22px;
+}
+.card:hover > div > .play_icon{
+    transform: translateY(0);
+    opacity: 1;
+}
+@media only screen and (max-width: 1600px) {
+    .card{   
+        max-width: calc(100% / 5 - 20px);  
+    }
+}
+
+@media only screen and (max-width: 1350px) {
+    .card{   
+        max-width: calc(100% / 4 - 20px);  
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    .card{   
+        max-width: calc(100% / 3 - 20px);  
+    }
+}
+
+@media only screen and (max-width: 800px) {
+    .card{   
+        max-width: calc(100% / 2 - 20px);  
+    }
+}
