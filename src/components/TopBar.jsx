@@ -1,8 +1,20 @@
 import React from 'react'
+import { useNavigate  } from "react-router-dom";
+
+import {MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
+
+import styles from '../css/TopBar.module.css'
 
 const TopBar = () => {
+  let navigate = useNavigate ()
+    
   return (
-    <div className='p-2 h-[60px] min-h-[60px] bg-black mb-0 text-white max-w-[calc(100%_-_240px)]'>TopBar</div>
+    <div className={`${styles.topbar} py-3 px-10 h-[60px] min-h-[65px] mb-0 text-white absolute animate-slidedown`}>
+      <div className={styles.arrowWrap}>
+        <MdArrowBackIosNew onClick={() => navigate(-1)}/>
+        <MdArrowForwardIos onClick={() => navigate(1)}/>
+      </div>
+    </div>
   )
 }
 

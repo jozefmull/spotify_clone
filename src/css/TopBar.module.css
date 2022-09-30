@@ -1,0 +1,30 @@
+.topbar{
+    background: rgb(11,11,11);
+    background: linear-gradient(135deg, rgba(11,11,11,1) 0%, rgba(44,44,44,1) 100%);
+    opacity: 0.95;
+    z-index: 80;
+    width: calc(100% - 250px);
+}
+.arrowWrap{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.arrowWrap > svg{
+    width: 34px;
+    height: 34px;
+    padding: 8px;
+    background-color: rgba(34,34,34,1);
+    
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.arrowWrap > svg:first-child{
+    margin-right: 10px;
+}
+
+.arrowWrap > svg:hover{
+    transform: scale(1.1);
+}

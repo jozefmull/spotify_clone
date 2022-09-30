@@ -1,0 +1,61 @@
+.wrapper{
+    flex: 1;
+}
+.wrapper > .hero{
+    padding: 4rem 2rem 2.5rem 2rem;
+    height: 100%;
+    background: rgb(84,84,84);
+    background: linear-gradient(180deg, rgba(84,84,84,1) 0%, rgba(44,44,44,1) 100%);
+    display: flex;
+    align-items: flex-end;
+    color: #fff;
+    max-height: 350px;
+}
+.wrapper > .hero > div > img{
+    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+}
+.wrapper > .hero .artist{
+    display: flex;
+    align-items: center;
+}
+.wrapper > .hero .artist img{
+    border-radius: 50%;
+    margin-right: 15px;
+}
+
+.wrapper > .popularTracks{
+    padding: 25px;    
+}
+
+.wrapper  h5,
+.wrapper h6{
+    width: fit-content;
+    pointer-events: none;
+}
+.wrapper .controls_wrap{
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+
+}
+.wrapper .controls_wrap > .play_icon{
+    border-radius: 50%;
+    padding: 10px;
+    width: 48px;
+    height: 48px;
+    background-color: #1ed760;
+    color: #000;
+    cursor: pointer;
+    transition: all .3s ease;
+    margin-right: 10px;
+}
+.wrapper .controls_wrap > .play_icon:hover{
+    background-color: #1ab550;
+}
+.wrapper .controls_wrap > .favourite_icon{
+    width: 48px;
+    height: 48px;
+    padding: 5px;
+    cursor: pointer;
+    fill: #1ed760;
+}

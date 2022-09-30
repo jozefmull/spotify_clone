@@ -11,7 +11,6 @@ const links = [
 ];
 
 const Sidebar = () => {
-
     const navLinksRenderer = () => {
         let styles ={
             active : {'color': '#fff'},
@@ -31,11 +30,10 @@ const Sidebar = () => {
           </NavLink>
         ))  
     }
-    // h-[calc(100%_-_10rem)]
   return (
-    <div className='p-5 bg-black w-[250px] '>
+    <div className='px-5 py-3 bg-black min-w-[250px] w-full max-w-[250px] animate-slidedown'>
     <div className='flex text-white  h-[50px] justify-start items-center'>
-      <FaSpotify className='mr-2 h-[40px] w-[40px]'/>  <em className='font-semibold text-2xl'>SpotifyClone</em>
+      <FaSpotify className='mr-2 h-[40px] w-[40px]'/>  <em className='font-semibold text-2xl'>NotSpotify</em>
     </div>
     <div className="mt-7">
       {navLinksRenderer()}

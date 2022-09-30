@@ -4,7 +4,7 @@
 
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont,'CircularSp', 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -18,7 +18,7 @@ code {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 20px;
 }
 
 /* Track */
@@ -38,7 +38,7 @@ code {
 }
 
 .swiper{
-  padding: 0px 10px !important
+  padding-left: 10px !important
 }
 
 .swiper-button-prev,.swiper-button-next{
@@ -58,7 +58,10 @@ code {
   color: #fff !important;
 }
 
-
+.notification{
+  box-shadow: none !important;
+  border-radius: 5px !important;
+}
 /*
 * NORMALIZE CSS
 */

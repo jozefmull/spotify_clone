@@ -1,0 +1,30 @@
+.inputwrap {
+    position: relative;
+}
+.inputwrap > .input{
+    width: 100%;
+    max-width: 400px;
+    border-radius: 10px;
+    height: 40px;
+    margin-left: 5px;
+    outline: none;
+    border: none;
+    color: #000;
+    padding: 6px 10px 6px 40px;
+    line-height: 1;
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+.inputwrap > .input::placeholder{
+    font-weight: 500;
+    color: rgb(122, 122, 122);
+}
+
+.inputwrap > svg{
+    position: absolute;
+    fill: #000;
+    top: 6px;
+    left: 9px;
+    font-size: 30px;
+}

@@ -14,17 +14,19 @@
     color: #fff;
     transition: all .3s ease;
     cursor: pointer;
+    pointer-events: none;
 }
 
 .slide > img{
     position: absolute;
-    width: 200px;
-    height: 125px;
+    width: 175px;
+    height: 100px;
     left: -25%;
-    bottom: -50px;
+    bottom: -35px;
     transform: rotate(-30deg);
     border-radius: 10px;
     transition: all .3s ease;
+    pointer-events: none;
 }
 
 .slide:hover > img{

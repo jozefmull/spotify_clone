@@ -4,24 +4,61 @@ export const AppReducer = (state, action) => {
       case 'CHART_BY_GENRE_REQUEST':
         return {
           ...state,
-          loading: true,
+          songsByGenre: {
+            ...state.songsByGenre,
+            loading: true
+          }
         }
         case 'CHART_BY_GENRE_SUCCESS':
             return {
               ...state,
-              loading: false,
-              songsByGenre: action.payload,
+              songsByGenre: {
+                ...state.songsByGenre,
+                loading: false,
+                data: action.payload
+              }
             }
         case 'CHART_BY_GENRE_FAIL':
         return {
           ...state,
-          error: action.payload
+          songsByGenre: {
+            ...state.songsByGenre,
+            error: action.payload
+          }
         }
         case 'CHANGE_GENRE':
           return {
             ...state,
-            genre: action.payload,
+            songsByGenre: {
+              ...state.songsByGenre,
+              genre: action.payload
+            }
           }
+          case 'SONG_DETAILS_REQUEST':
+            return {
+              ...state,
+              songDetails: {
+                ...state.songDetails,
+                loading: true,
+              }
+            }
+          case 'SONG_DETAILS_SUCCESS':
+                return {
+                  ...state,
+                  songDetails: {
+                    ...state.songDetails,
+                    loading: false,
+                    data: action.payload,
+                  }
+                }
+          case 'SONG_DETAILS_FAIL':
+            return {
+              ...state,
+              songDetails: {
+                ...state.songDetails,
+                error: action.payload,
+              }
+            }
       default:
         return state
     }
