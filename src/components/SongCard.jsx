@@ -23,6 +23,7 @@ const SongCard = ({song}) => {
         <h3 className='font-bold mb-3'>{song.title.length < 30 ? song.title : song.title.substring(0,30) + '...'}</h3>
         <span>{song.subtitle.length < 30 ? song.subtitle : song.subtitle.substring(0,30) + '...'}</span>
       </Link>
+      <div></div>
     </div>
   )
 }
