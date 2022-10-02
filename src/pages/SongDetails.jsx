@@ -4,7 +4,6 @@ import { useParams } from 'react-router-dom'
 import { GlobalContext } from '../context/GlobalState'
 import {MdPlayArrow, MdFavoriteBorder, MdFavorite} from 'react-icons/md'
 
-// import Notification from '../components/Notification'
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
 import RelatedSongs from '../components/RelatedSongs'
@@ -31,22 +30,26 @@ const SongDetails = () => {
     <div className={styles.wrapper}>
        {error && error.message && <Notification type='error' message={error.message} title='Error' />}
       <div className={styles.hero}>
-        <div className='relative mr-5'>
+      <div className='mr-5 relative w-[200px] h-[200px]'>
           {loading && <Loader/>}
-          <img className='animate-slideup' src={ (!loading && data) ? data.images?.coverart : '' } alt="song_image" width={200} height={200}/>
+          {Object.keys(data).length !== 0 && !loading && (
+            <img className='animate-slideup' 
+              src={data?.images?.coverart} 
+            alt="song_image" width={200} height={200}/>
+          )}
         </div>
         <div className='flex flex-col'>
-          <span className='font-bold text-md relative animate-slideup'>
+          <div className='relative min-w-[120px] min-h-[18px]'>
             {loading && <Loader/>}
-            SONG
-          </span>
-          <h1 className='font-bold text-6xl mt-1 mb-4 relative animate-slideup'>
+            {Object.keys(data).length !== 0 && !loading && <p className='font-bold text-md animate-slideup'>SONG</p>}
+          </div>
+          <div className='mt-1 mb-2 relative min-h-[60px] min-w-[175px]'>
             {loading && <Loader/>}
-            {!loading && data && data.title}
-          </h1>
-          <div className={`${styles.artist} relative`}>
+            {Object.keys(data).length !== 0 && !loading && <h1 className='animate-slideup m-0 font-bold text-6xl'>{data?.title}</h1>}
+          </div>
+          <div className="relative min-h-[18px] min-w-[125px]">
             {loading && <Loader/>}
-            <span className='font-bold animate-slideup'>{!loading && data && data.subtitle}</span>
+            {Object.keys(data).length !== 0 && !loading && <p className='animate-slideup font-bold'>{data?.subtitle}</p>}
           </div>
         </div>
       </div>

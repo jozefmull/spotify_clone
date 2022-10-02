@@ -13,7 +13,7 @@ const Discover = () => {
 
   useEffect(() => {
     if (data.length === 0) {
-      getWorldChartsByGenre()
+      getWorldChartsByGenre(genre.value)
     }    
     // eslint-disable-next-line
   }, [])
@@ -22,12 +22,11 @@ const Discover = () => {
     <div className={`${styles.container} py-5 px-10 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
       {/* ERROR  MESSAGE*/}
       {error && error.message && <Notification type='error' message={error.message} title='Error' />}
-
       <h1 className='font-bold text-white text-3xl mt-2 mb-4 ml-2 animate-slideup'>Discover</h1>
       <h1 className='font-bold text-white text-xl mt-2 mb-2 ml-2 animate-slideup'>Genres</h1>
           <Genres />
       <h1 className='font-bold text-white text-xl mt-10 mb-2 ml-2 animate-slideup'>{genre.title}</h1>
-      <div className={`${styles.datawrap} flex flex-wrap gap-5 justify-start`}>
+      <div className={`${styles.datawrap} flex flex-wrap gap-5 justify-start relative`}>
         {data.length > 0 && data.map(song => (
           <SongCard key={song.key} song={song} loading={loading}/>
         ))}

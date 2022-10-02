@@ -173,6 +173,32 @@ export const AppReducer = (state, action) => {
                   error: action.payload
               }
             }
+          case 'ARTIST_DETAILS_REQUEST': 
+            return {
+              ...state,
+              artistDetails: {
+                ...state.artistDetails,
+                loading: true,
+            }
+          }
+          case 'ARTIST_DETAILS_SUCCESS': 
+            return {
+              ...state,
+              artistDetails: {
+                ...state.artistDetails,
+                loading: false,
+                data: action.payload
+            }
+          }
+          case 'ARTIST_DETAILS_FAIL': 
+            return {
+              ...state,
+              artistDetails: {
+                ...state.artistDetails,
+                loading: false,
+                error: action.payload,
+            }
+          }
       default:
         return state
     }

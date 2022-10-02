@@ -44,6 +44,11 @@ const initialState = {
       loading:false,
       error:null,
       data: {}
+    },
+    artistDetails: {
+      loading:false,
+      error:null,
+      data:{}
     }
 }
 
@@ -183,7 +188,7 @@ export const GlobalProvider = ({children}) => {
    }
 
    /*
-    * GET TOP CHARTS
+    * GET RELATED SONGS
     */
    const getRelatedSongs = async(id) => {
 
@@ -233,6 +238,32 @@ export const GlobalProvider = ({children}) => {
     }
    }
 
+   /*
+    * GET RELATED SONGS
+    */
+   const getArtistDetails = async(key) => {
+
+    const options = {
+      params: {artist_id: key},
+      headers: {
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
+      }
+    };
+
+    try {
+      dispatch({type: 'ARTIST_DETAILS_REQUEST'})
+
+      const res = await axios.get('https://shazam-core.p.rapidapi.com/v1/artists/details', options)
+      const {data} = res
+
+      dispatch({type: 'ARTIST_DETAILS_SUCCESS', payload: data})
+      
+    } catch (error) {
+       dispatch({type: 'ARTIST_DETAILS_FAIL', payload: error})
+    }
+   }
+
 
     return (
         <GlobalContext.Provider
@@ -246,6 +277,7 @@ export const GlobalProvider = ({children}) => {
             topCharts: state.topCharts,
             relatedSongs: state.relatedSongs,
             searchResults: state.searchResults,
+            artistDetails: state.artistDetails,
             getWorldChartsByGenre,
             changeGenre,
             getSongDetails,
@@ -253,7 +285,8 @@ export const GlobalProvider = ({children}) => {
             changeCountry,
             getTopCharts,
             getRelatedSongs,
-            getSearchResults
+            getSearchResults,
+            getArtistDetails
           }}
         >
           {children}

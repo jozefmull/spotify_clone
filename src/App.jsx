@@ -33,7 +33,7 @@ const App = () => {
             <Route path='/top-artists' element={<TopArtists/>} />
             <Route path='/top-charts' element={<TopCharts/>} />
             <Route path='/song/:songid' element={<SongDetails/>} />
-            <Route path='/artis/:artisid' element={<ArtistDetails/>} />
+            <Route path='/artist/:artistid' element={<ArtistDetails/>} />
             <Route path='/search/:searchquery' element={<Search/>} />
           </Routes>
         </div>  

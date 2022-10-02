@@ -33,7 +33,7 @@ const Search = () => {
     <div className={`${styles2.container_secondary} py-5 px-10 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
       {error && error.message && <Notification type='error' message={error.message} title='Error' />}
       <h1 className='font-bold text-white text-3xl mt-2 mb-4 ml-2 animate-slideup'>Search</h1>
-      <div className={styles.inputwrap}>
+      <div className={`${styles.inputwrap} animate-slideup`}>
           <form autoComplete='off'>
             <input autoComplete='off' value={searchQuery} className={styles.input} onChange={(e) => handleChange(e)} type="search" name="search_songs" id="search" placeholder='What do you want to listen to?'/>
           </form>

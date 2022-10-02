@@ -3,31 +3,18 @@
     overflow-y: scroll;
 }
 .wrapper > .hero{
-    padding: 4rem 2rem 2.5rem 2rem;
-    height: 100%;
+    padding: 7rem 2rem 2.5rem 2rem;
+    height: fit-content;
     background: rgb(84,84,84);
     background: linear-gradient(180deg, rgba(84,84,84,1) 0%, rgba(44,44,44,1) 100%);
     display: flex;
     align-items: flex-end;
     color: #fff;
-    max-height: 350px;
+    overflow:hidden ;
 }
-.wrapper > .hero > div > img{
+.wrapper > .hero img{
     box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
 }
-.wrapper > .hero .artist{
-    display: flex;
-    align-items: center;
-}
-.wrapper > .hero .artist img{
-    border-radius: 50%;
-    margin-right: 15px;
-}
-
-.wrapper > .popularTracks{
-    padding: 25px;    
-}
-
 .wrapper  h5,
 .wrapper h6{
     width: fit-content;
