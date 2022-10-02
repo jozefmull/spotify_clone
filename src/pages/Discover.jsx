@@ -13,7 +13,7 @@ const Discover = () => {
 
   useEffect(() => {
     if (data.length === 0) {
-      getWorldChartsByGenre(genre.value)
+      // getWorldChartsByGenre(genre.value)
     }    
     // eslint-disable-next-line
   }, [])

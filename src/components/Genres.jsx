@@ -1,7 +1,7 @@
 import React, {useContext} from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
-import { Navigation } from 'swiper';
+import {FreeMode, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
 // import Swiper and modules styles
@@ -30,7 +30,7 @@ const Genres = () => {
         return (
             genres.map((genre) => (
                 <SwiperSlide className={`${styles.slide} animate-slideup`} key={genre.value} aria-label={genre.title} aria-hidden={genre.value} style={{backgroundColor: genre.background}} onClick={(e) => handleChange(e)}>
-                    <h2 className='text-2xl font-semibold'>{genre.title}</h2>
+                    <h2 className='text-xl font-semibold'>{genre.title}</h2>
                     <img src={genre.image} alt="genre_image"/>
                 </SwiperSlide>
             ))
@@ -43,8 +43,9 @@ const Genres = () => {
         slidesPerView='auto'
         spaceBetween={10}
         loop={true}
-        modules={[Navigation]}
+        modules={[Navigation, FreeMode]}
         navigation
+        freeMode
         responsive='true'
             breakpoints={{
                 100:{

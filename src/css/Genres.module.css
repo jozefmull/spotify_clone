@@ -1,9 +1,9 @@
 .slide{
     height: 150px;
-    width: 200px;
+    width: 150px;
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius:7px;
 }
 .slide:hover{
     cursor: pointer;
@@ -25,9 +25,10 @@
     left: -25%;
     bottom: -35px;
     transform: rotate(-30deg);
-    border-radius: 10px;
+    border-radius: 5px;
     transition: all .3s ease;
     pointer-events: none;
+    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
 }
 
 .slide:hover > img{
