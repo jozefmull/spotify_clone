@@ -75,7 +75,7 @@
     }
 }
 
-@media only screen and (max-width: 450px) {
+@media only screen and (max-width: 300px) {
     .card{   
         max-width: calc(100%);  
     }

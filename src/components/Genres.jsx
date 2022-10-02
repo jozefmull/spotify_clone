@@ -50,7 +50,7 @@ const Genres = () => {
                 100:{
                     slidesPerView:1
                 },
-                400:{
+                300:{
                     slidesPerView: 2,
                 },
                 600: {
