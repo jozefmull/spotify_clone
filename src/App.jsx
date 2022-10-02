@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React from 'react'
 
 import {Routes, Route} from 'react-router-dom'
 
@@ -13,6 +13,7 @@ import AroundYou from './pages/AroundYou'
 import TopArtists from './pages/TopArtists'
 import TopCharts from './pages/TopCharts'
 import SongDetails from './pages/SongDetails'
+import ArtistDetails from './pages/ArtistDetails'
 
 import styles from './css/App.module.css'
 
@@ -32,6 +33,8 @@ const App = () => {
             <Route path='/top-artists' element={<TopArtists/>} />
             <Route path='/top-charts' element={<TopCharts/>} />
             <Route path='/song/:songid' element={<SongDetails/>} />
+            <Route path='/artis/:artisid' element={<ArtistDetails/>} />
+            <Route path='/search/:searchquery' element={<Search/>} />
           </Routes>
         </div>  
     </div>

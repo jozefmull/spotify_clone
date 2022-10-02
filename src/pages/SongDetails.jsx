@@ -7,6 +7,7 @@ import {MdPlayArrow, MdFavoriteBorder, MdFavorite} from 'react-icons/md'
 // import Notification from '../components/Notification'
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
+import RelatedSongs from '../components/RelatedSongs'
 
 import styles from '../css/SongDetails.module.css'
 
@@ -22,7 +23,7 @@ const SongDetails = () => {
   }
 
   useEffect(() => {
-    // getSongDetails(songid)
+    getSongDetails(songid)
     // eslint-disable-next-line
   }, [songid])
 
@@ -46,22 +47,18 @@ const SongDetails = () => {
           <div className={`${styles.artist} relative`}>
             {loading && <Loader/>}
             <span className='font-bold animate-slideup'>{!loading && data && data.subtitle}</span>
-            {/* <img src="https://i.scdn.co/image/ab6761610000f17853e9f1076c20cd9141926791" alt="artist_photo" width={35} height={35} />
-            <span className='font-bold'>Artist</span> */}
           </div>
         </div>
       </div>
-      <div className='text-white p-8'>
+      <div className='text-white px-8 pt-8'>
         <div className={`${styles.controls_wrap} animate-slideup`}>
             <MdPlayArrow className={styles.play_icon}/>
             {favourite ? <MdFavorite className={styles.favourite_icon} onClick={() => handleClick()}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={() => handleClick()}/>}
-           
         </div>
-        <h6 className='font-semibold my-2 text-md animate-slideup'>Popular tracks by</h6>
-        <h5 className='font-bold text-xl relative animate-slideup'>SAM SMITH{loading && <Loader/>}</h5>
       </div>
-      <div className='text-white p-8'>
+      <div className='text-white px-8 pb-8'>
         <h5 className='font-bold text-xl animate-slideup'>Related tracks</h5>
+        <RelatedSongs songid={songid}/>
       </div>
     </div>
   )

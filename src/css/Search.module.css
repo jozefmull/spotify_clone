@@ -1,7 +1,7 @@
 .inputwrap {
     position: relative;
 }
-.inputwrap > .input{
+.inputwrap .input{
     width: 100%;
     max-width: 400px;
     border-radius: 10px;
@@ -16,7 +16,7 @@
     font-size: 0.875rem;
 }
 
-.inputwrap > .input::placeholder{
+.inputwrap .input::placeholder{
     font-weight: 500;
     color: rgb(122, 122, 122);
 }

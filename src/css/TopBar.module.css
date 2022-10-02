@@ -4,6 +4,19 @@
     opacity: 0.95;
     z-index: 80;
     width: calc(100% - 250px);
+    transition: all .3s ease;
+}
+
+.topbar > .mobile_menu{
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    padding: 60px 1rem 20px 1rem;
+    background: rgb(11,11,11);
+    background: linear-gradient(135deg, rgba(11,11,11,1) 0%, rgba(44,44,44,1) 100%);
+    z-index: -1;
+    border-bottom: 1px solid rgb(107, 107, 107);
 }
 .arrowWrap{
     display: flex;
@@ -27,4 +40,23 @@
 
 .arrowWrap > svg:hover{
     transform: scale(1.1);
+}
+
+.topbar > svg{
+    width: 35px;
+    height: 35px;
+    cursor: pointer;
+    display: none;
+}
+
+@media only screen and (max-width: 876px) {
+    .topbar{
+        width: 100% !important;
+        max-width: unset;
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .topbar > svg{
+        display: block;
+    }
 }

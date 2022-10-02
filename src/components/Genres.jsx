@@ -40,23 +40,20 @@ const Genres = () => {
   return (
     <>
         <Swiper
-            modules={[Navigation]}
-            spaceBetween={10}
-            slidesPerView={7}
-            navigation
-            // resposive="true"
-            loop={true}
-            pagination={{ clickable: true }}
-            scrollbar={{ draggable: true }}
-            // onSwiper={(swiper) => console.log(swiper)}
-            // onSlideChange={() => console.log('slide change')}
+        slidesPerView='auto'
+        spaceBetween={10}
+        loop={true}
+        modules={[Navigation]}
+        navigation
+        responsive='true'
             breakpoints={{
-                // when window width is >= 640px
-                640: {
-                  slidesPerView: 2,
+                100:{
+                    slidesPerView:1
                 },
-                // when window width is >= 768px
-                768: {
+                400:{
+                    slidesPerView: 2,
+                },
+                600: {
                   slidesPerView: 3,
                 },
                 1024:{

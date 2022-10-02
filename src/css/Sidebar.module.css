@@ -1,6 +1,5 @@
-.sidebar{
-    background-color: #000000;
-    color: #fff;
-    min-width: 235px;
-    padding: 5px;
+@media only screen and (max-width: 876px) {
+    .sidebar{
+        display: none !important;
+    }
 }
