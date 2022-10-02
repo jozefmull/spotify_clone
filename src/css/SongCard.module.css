@@ -71,7 +71,7 @@
 
 @media only screen and (max-width: 600px) {
     .card{   
-        max-width: calc(100% / 2 - 20px);  
+        max-width: calc(100% / 2 - 5px);  
     }
 }
 
