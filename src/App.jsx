@@ -3,7 +3,7 @@ import React from 'react'
 import {Routes, Route} from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
-import MusicPlayer from './components/MusicPlayer'
+import MusicPlayer from './components/MusicPlayer/index'
 import TopBar from './components/TopBar'
 import Notification from './components/Notification'
 

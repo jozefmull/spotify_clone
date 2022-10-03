@@ -51,7 +51,7 @@ const Search = () => {
         {data?.tracks?.hits?.map(song => song.track).map(song => (
           <SongCard key={song.key} song={song} loading={loading}/>
         ))}
-        {data?.artists?.hits}
+        
       </div>
     </div>
   )

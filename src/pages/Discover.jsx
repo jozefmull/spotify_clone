@@ -1,36 +1,23 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { GlobalContext } from '../context/GlobalState'
 
 import SongCard from '../components/SongCard'
 import Genres from '../components/Genres'
 import Notification from '../components/Notification'
-import Loader from '../components/Loader'
 
 import styles from '../css/Discover.module.css'
 
 const Discover = () => {
-  const [discoverLoading, setdiscoverLoading] = useState(false)
 
   const {getWorldChartsByGenre, songsByGenre} = useContext(GlobalContext)
   const {data, error , genre, loading} = songsByGenre
 
   useEffect(() => {
     if (data.length === 0) {
-      setdiscoverLoading(true)
       getWorldChartsByGenre(genre.value)
     }    
     // eslint-disable-next-line
   }, [])
-
-  if (discoverLoading && loading) {
-    return (
-      <div className={`${styles.container} py-5 px-10 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
-        <div className='relative w-full min-h-[25px]'>
-          <Loader/>
-        </div>
-      </div>
-    )
-  }
 
   return (
     <div className={`${styles.container} py-5 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>

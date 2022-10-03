@@ -16,10 +16,8 @@ const AroundYou = () => {
 
   const [country, setcountry] = useState(songsByCountryCountry ? songsByCountryCountry : '')
   const [error, seterror] = useState(null)
-  const [loading, setloading] = useState(songsByCountryCountry ? true : false)
+  const [loading, setloading] = useState(!songsByCountryCountry ? true : false)
   
-  console.log(loading);
-
   useEffect(() => {
     if (!songsByCountryCountry) {
       axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_PqcNZKExc5SbFsdwp330COqDnV7nT`)

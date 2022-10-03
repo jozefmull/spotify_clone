@@ -51,23 +51,23 @@ const Genres = () => {
                 100:{
                     slidesPerView:1
                 },
-                300:{
+                325:{
                     slidesPerView: 2,
                 },
-                600: {
+                450: {
                   slidesPerView: 3,
                 },
-                1024:{
-                    slidesPerView: 3,
-                },
-                1280:{
+                600:{
                     slidesPerView: 4,
                 },
-                1350:{
+                1150:{
                     slidesPerView: 5,
                 },
-                1536:{
+                1350:{
                     slidesPerView: 6,
+                },
+                1536:{
+                    slidesPerView: 7,
                 }
               }}
         >
