@@ -2,6 +2,8 @@ import React, {useState, useEffect, useContext} from 'react'
 import {MdSearch} from 'react-icons/md'
 import { GlobalContext } from '../context/GlobalState'
 
+import CircLoader from '../assets/circloader.svg'
+
 import Notification from '../components/Notification'
 import SongCard from '../components/SongCard'
 
@@ -10,22 +12,28 @@ import styles2 from '../css/Discover.module.css'
 
 const Search = () => {
   const [searchQuery, setsearchQuery] = useState('')
+  const [searchLoading, setsearchLoading] = useState(false)
+
   const {getSearchResults, searchResults} = useContext(GlobalContext)
   const {error, data, loading} = searchResults
 
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (searchQuery !== '') {
+        setsearchLoading(true)
         getSearchResults(searchQuery)
       }
     }, 1000)
 
-    return () => clearTimeout(delayDebounceFn)
+    return () => {
+      clearTimeout(delayDebounceFn)
+    }
     // eslint-disable-next-line
   }, [searchQuery])
 
   const handleChange = (e) => {
     e.preventDefault()
+
     setsearchQuery(e.target.value)
   }
 
@@ -37,7 +45,7 @@ const Search = () => {
           <form autoComplete='off'>
             <input autoComplete='off' value={searchQuery} className={styles.input} onChange={(e) => handleChange(e)} type="search" name="search_songs" id="search" placeholder='What do you want to listen to?'/>
           </form>
-          <MdSearch/>
+          {searchLoading && loading ?  <img src={CircLoader} alt="circ-loader" /> : <MdSearch/>}
       </div>
       <div className={`${styles2.datawrap} flex flex-wrap gap-5 justify-start mt-5`}>
         {data?.tracks?.hits?.map(song => song.track).map(song => (

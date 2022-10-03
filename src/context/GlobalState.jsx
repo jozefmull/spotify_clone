@@ -1,13 +1,8 @@
 import {createContext, useReducer} from 'react'
 import { AppReducer } from './AppReducer'
+// import { APIKEY, APIHOST } from '../API'
 
 import axios from 'axios'
-
-// const APIKEY = 'd4cff359efmshcdf6e869d043e5dp1fcfe3jsn7c77f4ddd1f2'
-// const APIHOST = 'shazam-core.p.rapidapi.com'
-const APIKEY = '798594203emsh16fe745f0e2d191p169316jsnfa0bffe0b22c'
-const APIHOST = 'shazam-core.p.rapidapi.com'
-// const GEO_API_KEY = 'at_PqcNZKExc5SbFsdwp330COqDnV7nT'
 
 const initialState = {
     songsByGenre: {
@@ -22,7 +17,7 @@ const initialState = {
     songDetails: {
       loading: false,
       error: null,
-      data: localStorage.getItem('SongDetails') ? JSON.parse(localStorage.getItem('SongDetails')) : {}
+      data: {}
     },
     songsByCountry: {
       loading: false,
@@ -75,9 +70,8 @@ export const GlobalProvider = ({children}) => {
         const options = {
             params: {genre_code: genre},
             headers: {
-              'X-RapidAPI-Key': APIKEY,
-              // 'X-RapidAPI-Key': process.env.REACT_APP_SHAZAM_API_KEY,
-              'X-RapidAPI-Host':APIHOST
+              'X-RapidAPI-Key': process.env.APIKEY,
+              'X-RapidAPI-Host': process.env.APIHOST
             }
         }
 
@@ -99,12 +93,11 @@ export const GlobalProvider = ({children}) => {
     * GET SONG DETAILS
     */
     const getSongDetails = async(id) => {
-      console.log('called');
       const options = {
         params: {track_id: id},
         headers: {
-          'X-RapidAPI-Key': APIKEY,
-          'X-RapidAPI-Host': APIHOST
+          'X-RapidAPI-Key': process.env.APIKEY,
+          'X-RapidAPI-Host': process.env.APIHOST
         }
       }
 
@@ -115,6 +108,7 @@ export const GlobalProvider = ({children}) => {
         const {data} = res
 
         dispatch({type: 'SONG_DETAILS_SUCCESS', payload: data})
+
         localStorage.setItem('SongDetails', JSON.stringify(data))
 
       } catch (error) {
@@ -142,8 +136,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {country_code: country},
       headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': APIHOST
+        'X-RapidAPI-Key': process.env.APIKEY,
+        'X-RapidAPI-Host': process.env.APIHOST
       }
     }
 
@@ -165,11 +159,10 @@ export const GlobalProvider = ({children}) => {
     * GET TOP CHARTS
     */
    const getTopCharts = async() => {
-
     const options = {
       headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': APIHOST
+        'X-RapidAPI-Key': process.env.APIKEY,
+        'X-RapidAPI-Host': process.env.APIHOST
       }
     };
 
@@ -195,8 +188,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {track_id: id},
       headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': APIHOST
+        'X-RapidAPI-Key': process.env.APIKEY,
+        'X-RapidAPI-Host': process.env.APIHOST
       }
     }
 
@@ -220,8 +213,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {offset: '20', query: myquery, search_type: 'SONGS'},
       headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': APIHOST
+        'X-RapidAPI-Key': process.env.APIKEY,
+        'X-RapidAPI-Host': process.env.APIHOST
       }
     }
 
@@ -230,7 +223,7 @@ export const GlobalProvider = ({children}) => {
 
       const res = await axios.get('https://shazam-core.p.rapidapi.com/v1/search/multi', options)
       const {data} = res
-      // console.log(data);
+
       dispatch({type: 'SEARCH_SUCCESS', payload: data})
       
     } catch (error) {
@@ -242,12 +235,13 @@ export const GlobalProvider = ({children}) => {
     * GET RELATED SONGS
     */
    const getArtistDetails = async(key) => {
+    dispatch({type: 'ARTIST_DETAILS_RESET'})
 
     const options = {
       params: {artist_id: key},
       headers: {
-        'X-RapidAPI-Key': APIKEY,
-        'X-RapidAPI-Host': APIHOST
+        'X-RapidAPI-Key': process.env.APIKEY,
+        'X-RapidAPI-Host': process.env.APIHOST
       }
     };
 

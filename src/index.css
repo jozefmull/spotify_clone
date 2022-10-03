@@ -10,37 +10,31 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
 /* width */
 ::-webkit-scrollbar {
   width: 15px;
 }
-
 /* Track */
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
 /* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
   transition: all .3s ease;
 }
-
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(162, 162, 162);
 }
-
 .swiper{
-  padding-left: 10px !important
+  padding-left: 10px !important;
+  padding-right: 10px !important;
 }
-
 .swiper-button-prev,.swiper-button-next{
   height: 100% !important;
   width: 50px !important;
@@ -57,20 +51,39 @@ code {
   font-size: 32px !important;
   color: #fff !important;
 }
-
 .notification{
   box-shadow: none !important;
   border-radius: 5px !important;
+  padding: 10px 10px 10px 40px !important;
+  margin-top: 7px !important;
+  margin-right: 7px !important;
 }
+.notification:before{
+  left: 8px !important;
+  width: 24px !important;
+  height: 24px !important;
+  font-size: 24px !important;
+}
+.notification-message .title{
+  line-height: 1 !important;
+  font-size: 0.95rem !important;
+} 
+.notification-message .message{
+  line-height: 1 !important;
+  font-size: 0.85rem !important;
+}
+
 
 @media only screen and (max-width: 600px) {
   ::-webkit-scrollbar {
     width: 7px !important;
   }
 }
+
 /*
-* NORMALIZE CSS
+* NORMALIZE CSS ==========================================================================
 */
+
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 
 /* Document

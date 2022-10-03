@@ -77,4 +77,5 @@ const Genres = () => {
   )
 }
 
+
 export default Genres

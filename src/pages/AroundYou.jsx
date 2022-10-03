@@ -4,7 +4,7 @@ import { GlobalContext } from '../context/GlobalState'
 
 import SongCard from '../components/SongCard'
 import Notification from '../components/Notification'
-// import BarLoading from '../components/BarLoading'
+import Loader from '../components/Loader'
 
 import styles from '../css/Discover.module.css'
 
@@ -22,7 +22,6 @@ const AroundYou = () => {
 
   useEffect(() => {
     if (!songsByCountryCountry) {
-      console.log('called');
       axios.get(`https://geo.ipify.org/api/v2/country?apiKey=at_PqcNZKExc5SbFsdwp330COqDnV7nT`)
       .then((res) => {
         setcountry(res?.data?.location?.country)
@@ -40,10 +39,19 @@ const AroundYou = () => {
     }
     // eslint-disable-next-line
   }, [country])
+
+  if (loading ) {
+    return (
+      <div className={`${styles.container_secondary} py-5 px-10 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
+        <div className='relative w-full min-h-[25px]'>
+            <Loader/>
+        </div>
+      </div>
+    )
+  }
     
   return (
     <div className={`${styles.container_secondary} py-5 px-10 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
-      {/* <BarLoading /> */}
       {/* ERROR  MESSAGE*/}
       {((error && error.message) || songsByCountryError) && <Notification type='error' message={error.message} title='Error' />}
       <h1 className='font-bold text-white text-3xl mt-2 mb-4 ml-2 animate-slideup'>Around you {`( ${country} )`}</h1>

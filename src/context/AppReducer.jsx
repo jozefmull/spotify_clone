@@ -199,6 +199,15 @@ export const AppReducer = (state, action) => {
                 error: action.payload,
             }
           }
+          case 'ARTIST_DETAILS_RESET': 
+            return {
+              ...state,
+              artistDetails: {
+                loading:false,
+                error:null,
+                data:{}
+            }
+          }
       default:
         return state
     }

@@ -28,12 +28,12 @@
     animation-iteration-count: infinite;
     animation-name: placeHolderShimmer;
     animation-timing-function: linear;
-    background-color: #777777;
+    background-color: rgb(44, 44, 44);
     background: linear-gradient(
       to right,
-      #888888 5%,
-      #777 15%,
-      #888888 30%
+      rgb(44, 44, 44)  5%,
+      rgb(64, 64, 64) 15%,
+      rgb(44, 44, 44)  30%
     );
     background-size: 800px 104px;
     position: relative;

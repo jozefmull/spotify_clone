@@ -21,7 +21,8 @@
     color: rgb(122, 122, 122);
 }
 
-.inputwrap > svg{
+.inputwrap > svg,
+.inputwrap > img{
     position: absolute;
     fill: #000;
     top: 6px;

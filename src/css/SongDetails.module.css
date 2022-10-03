@@ -53,7 +53,7 @@
     display: flex;
     flex-direction: column;
     column-gap: 10px;
-    max-height: 730px;
+    max-height: 750px;
     flex-wrap: wrap;
     position: relative;
 }
@@ -70,6 +70,7 @@
     width: 100%;
     flex-grow: 1;
     min-width: 400px;
+    
 }
 
 .relatedSongsWrapper > .relatedSong > span{
@@ -81,6 +82,8 @@
     margin-right: 1rem;
     width: 100%;
     max-width: 45px;
+    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+
 }
 
 .relatedSongsWrapper > .relatedSong:hover{

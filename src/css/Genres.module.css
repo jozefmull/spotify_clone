@@ -1,5 +1,5 @@
 .slide{
-    height: 150px;
+    height: 125px;
     width: 150px;
     position: relative;
     overflow: hidden;
@@ -20,10 +20,10 @@
 
 .slide > img{
     position: absolute;
-    width: 175px;
-    height: 100px;
-    left: -25%;
-    bottom: -35px;
+    width: 150px;
+    height: 75px;
+    left: -20%;
+    bottom: -25px;
     transform: rotate(-30deg);
     border-radius: 5px;
     transition: all .3s ease;
