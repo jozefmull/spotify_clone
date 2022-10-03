@@ -1,8 +1,16 @@
 import {createContext, useReducer} from 'react'
 import { AppReducer } from './AppReducer'
 // import { APIKEY, APIHOST } from '../API'
-
 import axios from 'axios'
+
+// const GEO_API_KEY = 'at_PqcNZKExc5SbFsdwp330COqDnV7nT'
+// GMAIL
+// const APIKEY = 'd4cff359efmshcdf6e869d043e5dp1fcfe3jsn7c77f4ddd1f2'
+// TEST
+// const APIKEY = '798594203emsh16fe745f0e2d191p169316jsnfa0bffe0b22c'
+// AZET
+const APIKEY = 'abd07a78a6msh26b04971e793508p1e55f0jsn961ba0a5cd5f'
+const APIHOST = 'shazam-core.p.rapidapi.com'
 
 const initialState = {
     songsByGenre: {
@@ -70,8 +78,8 @@ export const GlobalProvider = ({children}) => {
         const options = {
             params: {genre_code: genre},
             headers: {
-              'X-RapidAPI-Key': process.env.APIKEY,
-              'X-RapidAPI-Host': process.env.APIHOST
+              'X-RapidAPI-Key': APIKEY,
+              'X-RapidAPI-Host': APIHOST
             }
         }
 
@@ -96,8 +104,8 @@ export const GlobalProvider = ({children}) => {
       const options = {
         params: {track_id: id},
         headers: {
-          'X-RapidAPI-Key': process.env.APIKEY,
-          'X-RapidAPI-Host': process.env.APIHOST
+          'X-RapidAPI-Key': APIKEY,
+          'X-RapidAPI-Host': APIHOST
         }
       }
 
@@ -136,8 +144,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {country_code: country},
       headers: {
-        'X-RapidAPI-Key': process.env.APIKEY,
-        'X-RapidAPI-Host': process.env.APIHOST
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
       }
     }
 
@@ -161,8 +169,8 @@ export const GlobalProvider = ({children}) => {
    const getTopCharts = async() => {
     const options = {
       headers: {
-        'X-RapidAPI-Key': process.env.APIKEY,
-        'X-RapidAPI-Host': process.env.APIHOST
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
       }
     };
 
@@ -188,8 +196,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {track_id: id},
       headers: {
-        'X-RapidAPI-Key': process.env.APIKEY,
-        'X-RapidAPI-Host': process.env.APIHOST
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
       }
     }
 
@@ -213,8 +221,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {offset: '20', query: myquery, search_type: 'SONGS'},
       headers: {
-        'X-RapidAPI-Key': process.env.APIKEY,
-        'X-RapidAPI-Host': process.env.APIHOST
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
       }
     }
 
@@ -240,8 +248,8 @@ export const GlobalProvider = ({children}) => {
     const options = {
       params: {artist_id: key},
       headers: {
-        'X-RapidAPI-Key': process.env.APIKEY,
-        'X-RapidAPI-Host': process.env.APIHOST
+        'X-RapidAPI-Key': APIKEY,
+        'X-RapidAPI-Host': APIHOST
       }
     };
 
