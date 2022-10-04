@@ -1,5 +1,7 @@
 import React from 'react'
-import { MdSkipNext, MdSkipPrevious, MdPlayCircle, MdOutlinePauseCircleFilled, MdOutlineShuffle, MdRepeat  } from 'react-icons/md';
+import { MdSkipNext, MdSkipPrevious, MdPlayCircle,
+  //  MdOutlinePauseCircleFilled,
+    MdOutlineShuffle, MdRepeat  } from 'react-icons/md';
 
 import styles from '../../css/MusicPlayer.module.css'
 

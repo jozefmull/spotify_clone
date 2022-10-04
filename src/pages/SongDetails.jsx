@@ -7,12 +7,14 @@ import {MdPlayArrow, MdFavoriteBorder, MdFavorite} from 'react-icons/md'
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
 import RelatedSongs from '../components/RelatedSongs'
+import Modal from '../components/Modal'
 
 import styles from '../css/SongDetails.module.css'
 
 const SongDetails = () => {
   const {songid}  = useParams()
   const [favourite, setfavourite] = useState(false)
+  const [openModal, setopenModal] = useState(false)
   
   const {getSongDetails, songDetails} = useContext(GlobalContext)
   const {loading, error, data} = songDetails
@@ -56,8 +58,24 @@ const SongDetails = () => {
         <div className={`${styles.controls_wrap} animate-slideup`}>
             <MdPlayArrow className={styles.play_icon}/>
             {favourite ? <MdFavorite className={styles.favourite_icon} onClick={handleClick}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={handleClick}/>}
+            <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
         </div>
       </div>
+      {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && openModal && (
+          <Modal data={data?.sections[1]?.text} setopenModal={setopenModal}/>
+      )}
+      {/* <div className="mb-10">
+        <h2 className="text-white text-3xl font-bold">Lyrics:</h2>
+
+        <div className="mt-5">
+          {
+          Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && 
+            data?.sections[1]?.text.map((line,id) => (
+              <p key={`lyrics-${line}-${id}`} className="text-gray-400 text-base my-1">{line}</p>
+            ))
+          }
+        </div>
+      </div> */}
       <div className='text-white px-8 pb-8'>
         <h5 className='font-bold text-xl animate-slideup'>Related tracks</h5>
         {loading ? (

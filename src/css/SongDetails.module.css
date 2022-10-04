@@ -36,6 +36,8 @@
     cursor: pointer;
     transition: all .3s ease;
     margin-right: 10px;
+    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+
 }
 .wrapper .controls_wrap > .play_icon:hover{
     background-color: #1ab550;
@@ -46,7 +48,29 @@
     padding: 5px;
     cursor: pointer;
     fill: #1ed760;
+    box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
+
 }
+
+.wrapper .controls_wrap > .lyrics_btn{
+    padding: 0.3125rem 0.9375rem;
+    border-radius: 0.3125rem;
+    margin-left: 0.9375rem;
+    background: rgb(84,84,84);
+    background: linear-gradient(180deg, rgba(84,84,84,1) 0%, rgba(44,44,44,1) 100%);
+    font-weight: 600;
+    font-size: 0.9rem;
+    border: 0px solid transparent;
+    outline: none;
+    transition: all .3s ease;
+    box-shadow: 0 4px 60px rgb(0 0 0 / 100%);
+
+}
+
+.wrapper .controls_wrap > .lyrics_btn:hover{
+    border: 1px solid #1ab550;
+}
+
 .relatedSongsWrapper{
     margin-top: 20px;
     padding-bottom: 75px;
