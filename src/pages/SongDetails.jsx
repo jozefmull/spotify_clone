@@ -2,7 +2,7 @@ import React,{useEffect, useContext, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState'
-import {MdPlayArrow, MdFavoriteBorder, MdFavorite} from 'react-icons/md'
+import { MdPlayArrow, MdFavoriteBorder, MdFavorite, MdPause } from 'react-icons/md'
 
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
@@ -16,8 +16,9 @@ const SongDetails = () => {
   const [favourite, setfavourite] = useState(false)
   const [openModal, setopenModal] = useState(false)
   
-  const {getSongDetails, songDetails} = useContext(GlobalContext)
+  const {getSongDetails, songDetails, dispatch, playerData} = useContext(GlobalContext)
   const {loading, error, data} = songDetails
+  const {isPlaying, activeSong} = playerData
 
   const handleClick = () => {
     setfavourite(!favourite)
@@ -56,7 +57,11 @@ const SongDetails = () => {
       </div>
       <div className='text-white px-8 pt-8'>
         <div className={`${styles.controls_wrap} animate-slideup`}>
-            <MdPlayArrow className={styles.play_icon}/>
+            {isPlaying && activeSong.key === data.key ? (
+              <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
+            ) : (
+              <MdPlayArrow className={styles.play_icon} onClick={() => dispatch({type:'SET_ACTIVE_SONG', payload: Object.keys(data).length !== 0 && data})}/>
+            )}
             {favourite ? <MdFavorite className={styles.favourite_icon} onClick={handleClick}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={handleClick}/>}
             <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
         </div>
@@ -64,18 +69,6 @@ const SongDetails = () => {
       {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && openModal && (
           <Modal data={data?.sections[1]?.text} setopenModal={setopenModal}/>
       )}
-      {/* <div className="mb-10">
-        <h2 className="text-white text-3xl font-bold">Lyrics:</h2>
-
-        <div className="mt-5">
-          {
-          Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && 
-            data?.sections[1]?.text.map((line,id) => (
-              <p key={`lyrics-${line}-${id}`} className="text-gray-400 text-base my-1">{line}</p>
-            ))
-          }
-        </div>
-      </div> */}
       <div className='text-white px-8 pb-8'>
         <h5 className='font-bold text-xl animate-slideup'>Related tracks</h5>
         {loading ? (

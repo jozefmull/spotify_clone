@@ -1,4 +1,5 @@
-import React from 'react'
+import React, {useContext} from 'react'
+import { GlobalContext } from './context/GlobalState'
 
 import {Routes, Route} from 'react-router-dom'
 
@@ -18,12 +19,12 @@ import ArtistDetails from './pages/ArtistDetails'
 import styles from './css/App.module.css'
 
 const App = () => {
+
   return (
     <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden`}>
       <Notification type='info' message='This app uses Shazam-core API free tier' title='INFO!' closeAfter={100000}/>
       <Notification type='info' message='API calls are limited to 500 a month' title='INFO!' closeAfter={100000}/>
         <Sidebar/>
-        <MusicPlayer/>
         <div className="flex flex-col w-screen">
           <TopBar />
           <Routes>
@@ -36,6 +37,7 @@ const App = () => {
             <Route path='/artist/:artistid' element={<ArtistDetails/>} />
             <Route path='/search/:searchquery' element={<Search/>} />
           </Routes>
+          <MusicPlayer />
         </div>  
     </div>
   )

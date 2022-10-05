@@ -208,6 +208,23 @@ export const AppReducer = (state, action) => {
                 data:{}
             }
           }
+          case 'SET_ACTIVE_SONG': 
+            return {
+              ...state,
+              playerData: {
+                ...state.playerData,
+                activeSong: action.payload,
+                isPlaying: true,
+            }
+          }
+          case 'PLAY_PAUSE': 
+            return {
+              ...state,
+              playerData: {
+                ...state.playerData,
+                isPlaying: action.payload,
+            }
+          }
       default:
         return state
     }

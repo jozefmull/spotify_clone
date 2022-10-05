@@ -15,7 +15,7 @@ const initialState = {
     songDetails: {
       loading: false,
       error: null,
-      data: {}
+      data: localStorage.getItem('SongDetails') ? JSON.parse(localStorage.getItem('SongDetails')) : {}
     },
     songsByCountry: {
       loading: false,
@@ -42,6 +42,14 @@ const initialState = {
       loading:false,
       error:null,
       data:{}
+    },
+    playerData: {
+      currentSongs: [],
+      currentIndex: 0,
+      isActive: false,
+      isPlaying: false,
+      activeSong: {},
+      genreListId: '',
     }
 }
 
@@ -256,6 +264,12 @@ export const GlobalProvider = ({children}) => {
     }
    }
 
+  //  const setActiveSong = (song) => {
+
+  //   dispatch({type: 'SET_ACTIVE_SONG', payload: song})
+
+  //  }
+
 
     return (
         <GlobalContext.Provider
@@ -270,6 +284,7 @@ export const GlobalProvider = ({children}) => {
             relatedSongs: state.relatedSongs,
             searchResults: state.searchResults,
             artistDetails: state.artistDetails,
+            playerData: state.playerData,
             getWorldChartsByGenre,
             changeGenre,
             getSongDetails,
@@ -278,7 +293,8 @@ export const GlobalProvider = ({children}) => {
             getTopCharts,
             getRelatedSongs,
             getSearchResults,
-            getArtistDetails
+            getArtistDetails,
+            dispatch
           }}
         >
           {children}
