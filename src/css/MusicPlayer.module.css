@@ -258,20 +258,47 @@
     margin-right: 0.5rem;
   }
   .controls_wrap{
-    flex: 1;
-    margin: 0px 10px;
+    width: 60% !important;
+    margin: 0px 20px;
   }
   .player_controls_buttons{
-    width: 60%;
+    width: 115px;
+    gap: 8px;
+  }
+  .player_controls_buttons > svg:nth-child(1),
+  .player_controls_buttons > svg:nth-child(5){
+    display: none;
+  }
+  .volume_wrapper{
+    width: unset !important;
+  }
+  .volume_wrapper input{
+    display: none;
+  }
+  .volume_wrapper svg{
+    width: 32px;
+    height: 32px;
   }
 }
 @media screen and (max-width: 500px) {
-  .player_controls_buttons{
+  .controls_wrap{
     width: unset !important;
-    gap: 8px;
+    flex: 1;
+  }
+  .player_controls_buttons svg:nth-child(2),
+  .player_controls_buttons svg:nth-child(4){
+    width: 30px;
+    height: 30px;
+  }
+  .player_controls_buttons svg:nth-child(3){
+    width: 36px;
+    height: 36px;
+  }
+  /* .player_controls_buttons{
+    width: unset !important;
   }
   .volume_wrapper{
     max-width: 80px !important;
     width: unset !important;
-  }
+  } */
 }
