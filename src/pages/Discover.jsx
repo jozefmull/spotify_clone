@@ -8,10 +8,12 @@ import Notification from '../components/Notification'
 import styles from '../css/Discover.module.css'
 
 const Discover = () => {
-
-  const {getWorldChartsByGenre, songsByGenre} = useContext(GlobalContext)
+  // data from global context
+  const {getWorldChartsByGenre, songsByGenre, playerData} = useContext(GlobalContext)
   const {data, error , genre, loading} = songsByGenre
+  const {activeSong, isPlaying} = playerData
 
+  //on component mount if we have no data get world charts by genre from shazam
   useEffect(() => {
     if (data.length === 0) {
       getWorldChartsByGenre(genre.value)
@@ -21,15 +23,25 @@ const Discover = () => {
 
   return (
     <div className={`${styles.container} py-5 overflow-y-scroll pb-[75px] pt-[85px]  text-white`}>
-      {/* ERROR  MESSAGE*/}
+      {/* ERROR  MESSAGE - if there is an error and it has a message display notification */}
       {error && error.message && <Notification type='error' message={error.message} title='Error' />}
       <h1 className='font-bold text-white text-3xl mt-2 mb-4 ml-2 animate-slideup px-10'>Discover</h1>
       <h1 className='font-bold text-white text-xl mt-2 mb-3 ml-2 animate-slideup px-10'>Genres</h1>
+          {/* genres component */}
           <Genres />
       <h1 className='font-bold text-white text-xl mt-10 mb-2 ml-2 animate-slideup px-10'>{genre.title}</h1>
       <div className={`${styles.datawrap} flex flex-wrap gap-5 justify-start relative px-10`}>
-        {data.length > 0 && data.map(song => (
-          <SongCard key={song.key} song={song} loading={loading}/>
+        {/* if we have some data then map through them and display song cards */}
+        {data.length > 0 && data.map((song, id) => (
+          <SongCard 
+            key={`song-card-${song.key}-${song.title}`} 
+            song={song} 
+            loading={loading} 
+            data={data} 
+            id={id}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            />
         ))}
       </div>
     </div>

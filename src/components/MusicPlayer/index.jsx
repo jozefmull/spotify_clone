@@ -10,9 +10,11 @@ import VolumeBar from './VolumeBar';
 import styles from '../../css/MusicPlayer.module.css'
 
 const MusicPlayer = () => {
+  //data from global context
   const {playerData, dispatch} = useContext(GlobalContext)
   const {activeSong, currentIndex, currentSongs, isActive, isPlaying} = playerData
 
+  //states for player
   const [duration, setDuration] = useState(0)
   const [seekTime, setSeekTime] = useState(0)
   const [appTime, setAppTime] = useState(0)
@@ -22,14 +24,42 @@ const MusicPlayer = () => {
 
   // Play / Pause btn handle, if it is playing pause it after click and vice versa
   const handlePlayPause = () => {
-    // if (!isActive) return;
-
+    //if player is not active return
+    if (!isActive) return;
     if (isPlaying) {
       dispatch({type: 'PLAY_PAUSE', payload: false})
     } else {
       dispatch({type: 'PLAY_PAUSE', payload: true})
     }
-  };
+  }
+
+  // handle click on next icon
+  const handleNextSong = () => {
+    //if current index is equal to current songs length return first song in current songs
+    if (currentIndex === currentSongs.length - 1){
+      dispatch({type: 'NEXT_SONG', payload: 0})
+    //if shuffle is false return next song 
+    }else if (!shuffle) {
+      dispatch({type: 'NEXT_SONG', payload: currentIndex + 1})
+    //if shuffle is false return random song from current songs
+    } else {
+      dispatch({type: 'NEXT_SONG', payload: Math.floor(Math.random() * currentSongs.length)})
+    }
+  }
+
+  // handle click on previous icon
+  const handlePrevSong = () => {
+    // if index is 0 return last song of current songs array
+    if (currentIndex === 0) {
+      dispatch({type: 'PREV_SONG', payload: currentSongs.length - 1})
+    // if shuffle is true return random number from current songs length
+    } else if (shuffle) {
+      dispatch({type: 'PREV_SONG', payload: Math.floor(Math.random() * currentSongs.length)})
+    // if shuffle is false return previous index
+    } else {
+      dispatch({type: 'PREV_SONG', payload: currentIndex - 1})
+    }
+  }
 
   // if we have active song and it has title thats not undefined display Music Player
   if (activeSong?.title !== undefined) {
@@ -44,10 +74,9 @@ const MusicPlayer = () => {
             setRepeat={setRepeat}
             shuffle={shuffle}
             setShuffle={setShuffle}
-            currentSongs={currentSongs}
             handlePlayPause={handlePlayPause}
-            // handlePrevSong={handlePrevSong}
-            // handleNextSong={handleNextSong}
+            handlePrevSong={handlePrevSong}
+            handleNextSong={handleNextSong}
           />
           <PlayBackBar
             value={appTime}
@@ -63,8 +92,7 @@ const MusicPlayer = () => {
               isPlaying={isPlaying}
               seekTime={seekTime}
               repeat={repeat}
-              // currentIndex={currentIndex}
-              // onEnded={handleNextSong}
+              onEnded={handleNextSong}
               onTimeUpdate={(e) => setAppTime(e.target.currentTime)}
               onLoadedData={(e) => setDuration(e.target.duration)}
           />

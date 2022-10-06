@@ -25,9 +25,9 @@
 .player_controls_buttons > svg{
     cursor: pointer;
 }
-.player_controls_buttons > svg:not(.play):hover{
+/* .player_controls_buttons > svg:not(.play):hover{
     fill: #fff !important;
-}
+} */
 .player_controls_buttons > svg.play:hover{
     transform: scale(1.1);
 }

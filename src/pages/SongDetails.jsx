@@ -2,7 +2,9 @@ import React,{useEffect, useContext, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState'
-import { MdPlayArrow, MdFavoriteBorder, MdFavorite, MdPause } from 'react-icons/md'
+import { MdPlayArrow
+  // , MdFavoriteBorder, MdFavorite
+  , MdPause } from 'react-icons/md'
 
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
@@ -13,15 +15,19 @@ import styles from '../css/SongDetails.module.css'
 
 const SongDetails = () => {
   const {songid}  = useParams()
-  const [favourite, setfavourite] = useState(false)
+  // const [favourite, setfavourite] = useState(false)
   const [openModal, setopenModal] = useState(false)
   
-  const {getSongDetails, songDetails, dispatch, playerData} = useContext(GlobalContext)
+  const {getSongDetails, songDetails, dispatch, playerData, songsByGenre} = useContext(GlobalContext)
   const {loading, error, data} = songDetails
   const {isPlaying, activeSong} = playerData
 
-  const handleClick = () => {
-    setfavourite(!favourite)
+  // const handleClick = () => {
+  //   setfavourite(!favourite)
+  // }
+
+  const handleSetActiveSong = (data) => {
+    dispatch({type:'SET_ACTIVE_SONG', payload: {song: Object.keys(data).length !== 0 && data , currentSongs: songsByGenre.data} })
   }
 
   useEffect(() => {
@@ -60,9 +66,9 @@ const SongDetails = () => {
             {isPlaying && activeSong.key === data.key ? (
               <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
             ) : (
-              <MdPlayArrow className={styles.play_icon} onClick={() => dispatch({type:'SET_ACTIVE_SONG', payload: Object.keys(data).length !== 0 && data})}/>
+              <MdPlayArrow className={styles.play_icon} onClick={() => handleSetActiveSong(data)}/>
             )}
-            {favourite ? <MdFavorite className={styles.favourite_icon} onClick={handleClick}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={handleClick}/>}
+            {/* {favourite ? <MdFavorite className={styles.favourite_icon} onClick={handleClick}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={handleClick}/>} */}
             <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
         </div>
       </div>
@@ -71,14 +77,7 @@ const SongDetails = () => {
       )}
       <div className='text-white px-8 pb-8'>
         <h5 className='font-bold text-xl animate-slideup'>Related tracks</h5>
-        {loading ? (
-            <div className='mt-4 relative min-h-[25px] w-full'>
-              <Loader />
-            </div>
-        ) : 
-        Object.keys(data).length !== 0 && !loading && (
-          <RelatedSongs songid={songid}/>
-        )}
+        <RelatedSongs songid={songid}/>
       </div>
     </div>
   )

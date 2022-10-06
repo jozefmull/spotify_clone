@@ -213,16 +213,41 @@ export const AppReducer = (state, action) => {
               ...state,
               playerData: {
                 ...state.playerData,
-                activeSong: action.payload,
+                activeSong: action.payload.song,
                 isPlaying: true,
+                isActive: true,
+                currentSongs: action.payload.currentSongs,
+                currentIndex: action.payload.id
             }
+          }
+          case 'NEXT_SONG':
+            // console.log(action.payload)
+            return{
+              ...state,
+              playerData:{
+                ...state.playerData,
+                activeSong: state.playerData?.currentSongs[action.payload],
+                currentIndex: action.payload,
+                isActive: true
+              }
+          }
+          case 'PREV_SONG':
+            // console.log(action.payload)
+            return{
+              ...state,
+              playerData:{
+                ...state.playerData,
+                activeSong: state.playerData?.currentSongs[action.payload],
+                currentIndex: action.payload,
+                isActive: true
+              }
           }
           case 'PLAY_PAUSE': 
             return {
               ...state,
               playerData: {
                 ...state.playerData,
-                isPlaying: action.payload,
+                isPlaying: action.payload
             }
           }
       default:

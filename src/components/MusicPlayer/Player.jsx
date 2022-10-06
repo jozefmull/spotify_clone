@@ -27,7 +27,7 @@ const Player = ({  activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdat
         src={audioUri}
         ref={ref}
         loop={repeat}
-        // onEnded={onEnded}
+        onEnded={onEnded}
         onTimeUpdate={onTimeUpdate}
         onLoadedData={onLoadedData}        
   />

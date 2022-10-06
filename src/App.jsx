@@ -37,7 +37,11 @@ const App = () => {
             <Route path='/search/:searchquery' element={<Search/>} />
           </Routes>
           <MusicPlayer />
+          <div style={{height: '20px !important',width:'200px !important', padding: '10px', margin: '0 15px', border: '2px 5px'}}>
+
+          </div>
         </div>  
+        
     </div>
   )
 }
