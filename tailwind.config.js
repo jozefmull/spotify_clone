@@ -22,6 +22,10 @@ module.exports = {
           from: {opacity: 0 , transform: 'translateY(25%)' },
           to: { opacity: 1, transform: 'none' },
         },
+        slideupabsolute: {
+          from: {position:'absolute', opacity: 0 , transform: 'translateY(25%)' },
+          to: {position:'absolute', opacity: 1, transform: 'none' },
+        },
         slidedown: {
           from: { opacity: 0, transform: 'translateY(-25%)' },
           to: { opacity: 1, transform: 'none' },

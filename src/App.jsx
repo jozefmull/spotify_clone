@@ -10,7 +10,7 @@ import Notification from './components/Notification'
 import Discover from './pages/Discover'
 import Search from './pages/Search'
 import AroundYou from './pages/AroundYou'
-import TopArtists from './pages/TopArtists'
+// import TopArtists from './pages/TopArtists'
 import TopCharts from './pages/TopCharts'
 import SongDetails from './pages/SongDetails'
 import ArtistDetails from './pages/ArtistDetails'
@@ -21,16 +21,16 @@ const App = () => {
 
   return (
     <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden`}>
-      <Notification type='info' message='This app uses Shazam-core API free tier' title='INFO!' closeAfter={100000}/>
-      <Notification type='info' message='API calls are limited to 500 a month' title='INFO!' closeAfter={100000}/>
+      <Notification type='info' message='This app uses Shazam-core API free tier' title='INFO!' closeAfter={20000}/>
+      <Notification type='info' message='API calls are limited to 500 a month' title='INFO!' closeAfter={20000}/>
         <Sidebar/>
-        <div className="flex flex-col w-screen">
+        <div className="flex flex-col w-screen overflow-hidden">
           <TopBar />
           <Routes>
             <Route path='/' element={<Discover/>} />
             <Route path='/search' element={<Search/>} />
             <Route path='/around-you' element={<AroundYou/>} />
-            <Route path='/top-artists' element={<TopArtists/>} />
+            {/* <Route path='/top-artists' element={<TopArtists/>} /> */}
             <Route path='/top-charts' element={<TopCharts/>} />
             <Route path='/song/:songid' element={<SongDetails/>} />
             <Route path='/artist/:artistid' element={<ArtistDetails/>} />

@@ -51,7 +51,6 @@
     box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
 
 }
-
 .wrapper .controls_wrap > .lyrics_btn{
     padding: 0.3125rem 0.9375rem;
     border-radius: 0.3125rem;
@@ -66,52 +65,67 @@
     box-shadow: 0 4px 60px rgb(0 0 0 / 100%);
 
 }
-
 .wrapper .controls_wrap > .lyrics_btn:hover{
     border: 1px solid #1ab550;
 }
-
 .relatedSongsWrapper{
     margin-top: 20px;
     padding-bottom: 75px;
     display: flex;
     flex-direction: column;
     column-gap: 10px;
-    max-height: 750px;
+    max-height: 800px;
     flex-wrap: wrap;
     position: relative;
 }
-
 .relatedSongsWrapper > .relatedSong{
-    padding: 10px 15px;
     cursor: pointer;
     transition: .3s all ease;
     border-radius: 5px;
-    display: flex;
     position: relative;
-    align-items: center;
     max-width: 45%;
     width: 100%;
     flex-grow: 1;
-    min-width: 400px;
-    
+    min-width: 400px;  
+    margin: 0.1rem 0;
 }
-
-.relatedSongsWrapper > .relatedSong > span{
-    position: absolute;
-    left: 0.5rem;
+.relatedSongsWrapper > .relatedSong > a{
+    padding: 10px 15px;
+    display: flex;
+    align-items: center;
 }
-.relatedSongsWrapper > .relatedSong > img{
-    margin-left: 1.5rem;
+.relatedSongsWrapper > .relatedSong > a > span{
+    width: 24px;
+    height: 24px;
+    text-align: center;
+    padding: 4px;
+}
+.relatedSongsWrapper > .relatedSong > a > .play_icon,
+.relatedSongsWrapper > .relatedSong > a > .pause_icon{
+    fill: #1ed760;
+    width: 24px;
+    height: 24px;
+}
+.relatedSongsWrapper > .relatedSong > a > img{
+    margin-left: 1.25rem;
     margin-right: 1rem;
     width: 100%;
     max-width: 45px;
     box-shadow: 0 4px 60px rgb(0 0 0 / 50%);
-
 }
-
-.relatedSongsWrapper > .relatedSong:hover{
+.relatedSongsWrapper > .relatedSong:hover,
+.relatedSongsWrapper > .relatedSong.related_active{
     background-color: rgb(64, 64, 64);
+}
+.relatedSongsWrapper > .relatedSong > a > .play_icon,
+.relatedSongsWrapper > .relatedSong.related_active:hover > a > .play_icon{
+    display: none;
+}
+.relatedSongsWrapper > .relatedSong > a:hover > .play_icon{
+    display: unset;
+}
+.relatedSongsWrapper > .relatedSong > a:hover > span{
+    display: none;
 }
 
 @media only screen and (max-width: 1200px) {

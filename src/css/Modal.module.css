@@ -60,4 +60,19 @@
   /* Handle on hover */
 .modal_content::-webkit-scrollbar-thumb:hover {
     background: rgb(162, 162, 162);
-  }
+}
+@media only screen and (max-width: 500px) {
+   .modal_container{
+    padding: 1.5rem 0.5rem 1.5rem 1rem;
+    max-width: 400px;
+   } 
+}
+@media only screen and (max-width: 400px) {
+   .modal_content::-webkit-scrollbar{
+      display: unset;
+      width: 3px !important;
+   }
+   .modal_content{
+    padding-right: 0.5rem;
+   }
+}

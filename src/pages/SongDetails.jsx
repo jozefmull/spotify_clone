@@ -2,9 +2,7 @@ import React,{useEffect, useContext, useState} from 'react'
 import { useParams } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState'
-import { MdPlayArrow
-  // , MdFavoriteBorder, MdFavorite
-  , MdPause } from 'react-icons/md'
+import { MdPlayArrow, MdPause } from 'react-icons/md'
 
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
@@ -14,20 +12,26 @@ import Modal from '../components/Modal'
 import styles from '../css/SongDetails.module.css'
 
 const SongDetails = () => {
+  //component state for modal and song id from url parameters
   const {songid}  = useParams()
-  // const [favourite, setfavourite] = useState(false)
   const [openModal, setopenModal] = useState(false)
-  
-  const {getSongDetails, songDetails, dispatch, playerData, songsByGenre} = useContext(GlobalContext)
+  //data from global context
+  const {getSongDetails, songDetails, dispatch, playerData, songsByGenre, relatedSongs} = useContext(GlobalContext)
   const {loading, error, data} = songDetails
   const {isPlaying, activeSong} = playerData
-
-  // const handleClick = () => {
-  //   setfavourite(!favourite)
-  // }
-
+  const {data:dataRelated} = relatedSongs
+  //handle active song
   const handleSetActiveSong = (data) => {
-    dispatch({type:'SET_ACTIVE_SONG', payload: {song: Object.keys(data).length !== 0 && data , currentSongs: songsByGenre.data} })
+    dispatch({
+      type:'SET_ACTIVE_SONG',
+                //if we have song details set it to payload
+      payload: {song: Object.keys(data).length !== 0 && data,
+                //if relatedSongs exist and they have items in them set them to curr songs and append song details to beggining
+                //otherwise use songs by gen and append current song details to beggining
+                currentSongs: dataRelated && dataRelated.length > 0 ? [data, ...dataRelated] : [data, ...songsByGenre.data],
+                //set curnt id of player to 0 
+                id: 0  
+              }})
   }
 
   useEffect(() => {
@@ -37,6 +41,7 @@ const SongDetails = () => {
 
   return (
     <div className={styles.wrapper}>
+      {/* ERROR MESSAGE */}
        {error && error.message && <Notification type='error' message={error.message} title='Error' />}
       <div className={styles.hero}>
         {loading ? (<div className='mr-5 relative w-[150px] h-[150px]' width={200} height={200}>
@@ -63,21 +68,26 @@ const SongDetails = () => {
       </div>
       <div className='text-white px-8 pt-8'>
         <div className={`${styles.controls_wrap} animate-slideup`}>
-            {isPlaying && activeSong.key === data.key ? (
+            {/* IF song is playing and activesong key is equal to current song details key display pause icon and vice versa */}
+            {isPlaying && activeSong?.key === data?.key ? (
               <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
             ) : (
               <MdPlayArrow className={styles.play_icon} onClick={() => handleSetActiveSong(data)}/>
             )}
-            {/* {favourite ? <MdFavorite className={styles.favourite_icon} onClick={handleClick}/>  :  <MdFavoriteBorder className={styles.favourite_icon} onClick={handleClick}/>} */}
-            <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
+            {/* if we have section with type lyrics display button that opens modal with lyrics */}
+            {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && (
+                <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
+            )}
         </div>
       </div>
-      {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && openModal && (
+      {/* if modal state open is true display modal */}
+      {openModal && (
           <Modal data={data?.sections[1]?.text} setopenModal={setopenModal}/>
       )}
       <div className='text-white px-8 pb-8'>
         <h5 className='font-bold text-xl animate-slideup'>Related tracks</h5>
-        <RelatedSongs songid={songid}/>
+        {/* related songs component */}
+        <RelatedSongs songid={songid} song={data}/>
       </div>
     </div>
   )

@@ -3,7 +3,7 @@ import React, {useEffect, useRef} from 'react'
 const Player = ({  activeSong, isPlaying, volume, seekTime, onEnded, onTimeUpdate, onLoadedData, repeat  }) => {
     const ref = useRef(null)
 
-    let audioUri = activeSong?.hub?.actions[1]?.uri
+    let audioUri = activeSong?.hub?.actions[1]?.uri 
 
     if (ref.current) {        
         if (isPlaying) {

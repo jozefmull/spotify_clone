@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 body {
+  overflow: hidden;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Montserrat', 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -77,6 +78,15 @@ code {
 @media only screen and (max-width: 600px) {
   ::-webkit-scrollbar {
     width: 7px !important;
+  }
+}
+@media only screen and (max-width: 315px) {
+  .notification {
+    max-width: 100% !important; 
+    margin-right: 0px !important;
+  }
+  .notification-container{
+    max-width: 100%;
   }
 }
 

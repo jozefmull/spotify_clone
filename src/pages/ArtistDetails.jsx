@@ -51,7 +51,7 @@ const ArtistDetails = () => {
       <div className='text-white px-8 pb-8 pt-8'>
         <div className=' relative'> 
           {loading && <Loader/>}
-          {Object.keys(data).length !== 0 && !loading && (<p className=' font-bold text-xl animate-slideup'>Songs by ${data?.artists[artistid]?.attributes?.name}</p>)}
+          {Object.keys(data).length !== 0 && !loading && (<p className=' font-bold text-xl animate-slideup'>Songs by {data?.artists[artistid]?.attributes?.name}</p>)}
         </div>
         {loading ? (
             <div className='mt-4 relative min-h-[25px] w-full'>

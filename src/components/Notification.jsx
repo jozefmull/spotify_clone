@@ -14,10 +14,10 @@ const Notification = ({type, message, title, closeAfter}) => {
         NotificationManager.success(message, title);
         break;
       case 'warning':
-        NotificationManager.warning(message, title, 10000);
+        NotificationManager.warning(message, title, 20000);
         break;
       case 'error':
-        NotificationManager.error(message, title, 100000);
+        NotificationManager.error(message, title, 20000);
         break;
       default:
         break;

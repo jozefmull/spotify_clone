@@ -64,11 +64,13 @@ const Search = () => {
             key={`song-card-${song.key}-${song.title}`} 
             song={song} 
             loading={loading}
-            data={data} 
+            // search results have different structure than other data results
+            data={data?.tracks?.hits.map(song => song.track)} 
             id={id}
             isPlaying={isPlaying}
             activeSong={activeSong}
             />
+           
         ))}
       </div>
     </div>

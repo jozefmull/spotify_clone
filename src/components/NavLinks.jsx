@@ -1,12 +1,14 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import { MdOutlineShowChart, MdHomeFilled, MdSearch, MdLocationOn, MdOutlineGroups } from 'react-icons/md';
+import { MdOutlineShowChart, MdHomeFilled, MdSearch, MdLocationOn
+  // , MdOutlineGroups 
+} from 'react-icons/md';
 
 const links = [
     { name: 'Home', to: '/', icon: MdHomeFilled },
     { name: 'Search', to: '/search', icon: MdSearch },
     { name: 'Around You', to: '/around-you', icon: MdLocationOn },
-    { name: 'Top Artists', to: '/top-artists', icon: MdOutlineGroups },
+    // { name: 'Top Artists', to: '/top-artists', icon: MdOutlineGroups },
     { name: 'Top Charts', to: '/top-charts', icon: MdOutlineShowChart },
   ];
 

@@ -264,13 +264,6 @@ export const GlobalProvider = ({children}) => {
     }
    }
 
-  //  const setActiveSong = (song) => {
-
-  //   dispatch({type: 'SET_ACTIVE_SONG', payload: song})
-
-  //  }
-
-
     return (
         <GlobalContext.Provider
           value={{

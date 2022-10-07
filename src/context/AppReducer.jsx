@@ -221,7 +221,6 @@ export const AppReducer = (state, action) => {
             }
           }
           case 'NEXT_SONG':
-            // console.log(action.payload)
             return{
               ...state,
               playerData:{
@@ -232,7 +231,6 @@ export const AppReducer = (state, action) => {
               }
           }
           case 'PREV_SONG':
-            // console.log(action.payload)
             return{
               ...state,
               playerData:{
