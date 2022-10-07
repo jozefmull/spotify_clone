@@ -1,5 +1,5 @@
-import React from 'react'
-
+import React, {useContext} from 'react'
+import { GlobalContext } from './context/GlobalState'
 import {Routes, Route} from 'react-router-dom'
 
 import Sidebar from './components/Sidebar'
@@ -18,11 +18,14 @@ import ArtistDetails from './pages/ArtistDetails'
 import styles from './css/App.module.css'
 
 const App = () => {
+  const {playerData} = useContext(GlobalContext)
+  const {isActive} = playerData
 
   return (
     <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden`}>
       <Notification type='info' message='This app uses Shazam-core API free tier' title='INFO!' closeAfter={20000}/>
       <Notification type='info' message='API calls are limited to 500 a month' title='INFO!' closeAfter={20000}/>
+      {isActive && <Notification type='info' message='This app can play only song preview!' title='INFO!' closeAfter={20000}/>}
         <Sidebar/>
         <div className="flex flex-col w-screen overflow-hidden">
           <TopBar />

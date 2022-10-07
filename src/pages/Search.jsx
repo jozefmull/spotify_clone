@@ -57,20 +57,17 @@ const Search = () => {
           {searchLoading && loading ?  <img src={CircLoader} alt="circ-loader" /> : <MdSearch/>}
       </div>
       <div className={`${styles2.datawrap} flex flex-wrap gap-5 justify-start mt-5`}>
-         {/* if we have data results of search then map through them and display song cards */}
-         {/* ? after object or property means that if that property exists and is not undefined on that object use it */}
-        {data?.tracks?.hits?.map(song => song.track).map((song, id) => (
+         {/* if data has some keys meaning if it is not empty map through them and display song cards */}
+         {Object.keys(data).length !== 0 && data.map((song, id) => (
           <SongCard
             key={`song-card-${song.key}-${song.title}`} 
             song={song} 
             loading={loading}
-            // search results have different structure than other data results
-            data={data?.tracks?.hits.map(song => song.track)} 
+            data={data} 
             id={id}
             isPlaying={isPlaying}
             activeSong={activeSong}
             />
-           
         ))}
       </div>
     </div>

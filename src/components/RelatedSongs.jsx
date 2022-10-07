@@ -28,8 +28,9 @@ const RelatedSongs = ({songid, song}) => {
     getRelatedSongs(songid)
     // eslint-disable-next-line
   }, [songid])
+  
   //handle play - e prevent default bcs of parent link
-  const handlePlay = (e,related, id) => {
+  const handlePlay = (e, related, id) => {
     e.preventDefault()
     //related songs item handle play - set active song to current related sung, current songs to data with appended current song details to beggining and id + 1
     dispatch({type:'SET_ACTIVE_SONG', payload: {song: related, currentSongs: [song, ...data], id} })

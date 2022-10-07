@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 
 import { GlobalContext } from '../context/GlobalState'
 import { MdPlayArrow, MdPause } from 'react-icons/md'
+import DefaultImg from '../assets/images/default.png'
 
 import Loader from '../components/Loader'
 import Notification from '../components/Notification'
@@ -48,7 +49,7 @@ const SongDetails = () => {
           {loading && <Loader/>}
         </div>) : Object.keys(data).length !== 0 && !loading && (
            <img className='animate-slideup mr-5'  
-           src={ data?.images?.coverart} 
+           src={ data?.images?.coverart ? data.images?.coverart : DefaultImg} 
          alt="song-coverart" width={200} height={200}/>
         )}
         <div className='flex flex-col'>
@@ -67,18 +68,23 @@ const SongDetails = () => {
         </div>
       </div>
       <div className='text-white px-8 pt-8'>
-        <div className={`${styles.controls_wrap} animate-slideup`}>
-            {/* IF song is playing and activesong key is equal to current song details key display pause icon and vice versa */}
-            {isPlaying && activeSong?.key === data?.key ? (
-              <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
-            ) : (
-              <MdPlayArrow className={styles.play_icon} onClick={() => handleSetActiveSong(data)}/>
-            )}
-            {/* if we have section with type lyrics display button that opens modal with lyrics */}
-            {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && (
-                <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
-            )}
-        </div>
+        {/* If we do not have music uri in actions then dont display this section at all Display just notification*/}
+        {data?.hub?.actions ? (
+          <div className={`${styles.controls_wrap} animate-slideup`}>
+              {/* IF song is playing and activesong key is equal to current song details key display pause icon and vice versa */}
+              {isPlaying && activeSong?.key === data?.key ? (
+                <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
+              ) : (
+                <MdPlayArrow className={styles.play_icon} onClick={() => handleSetActiveSong(data)}/>
+              )}
+              {/* if we have section with type lyrics display button that opens modal with lyrics */}
+              {Object.keys(data).length !== 0 && !loading && data?.sections[1]?.type === 'LYRICS' && (
+                  <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
+              )}
+          </div>
+        ) : (
+          <Notification type='error' message='Unfortunately we do not have audio for this song' title='Audio missing' />
+        )}
       </div>
       {/* if modal state open is true display modal */}
       {openModal && (

@@ -6,7 +6,6 @@ import Player from './Player';
 import PlayBackBar from './PlayBackBar';
 import Track from './Track';
 import VolumeBar from './VolumeBar';
-import Notification from '../../components/Notification'
 
 import styles from '../../css/MusicPlayer.module.css'
 
@@ -66,7 +65,6 @@ const MusicPlayer = () => {
   if (activeSong?.title !== undefined) {
     return (
       <div className={`${styles.music_player} animate-slideup`}>
-        {isActive && <Notification type='info' message='This app can play only song preview!' title='INFO!' closeAfter={20000}/>}
         <Track isPlaying={isPlaying} activeSong={activeSong} isActive={isActive} />
         <div className={`${styles.controls_wrap} flex flex-col items-center justify-center max-w-[35%] w-[35%]`}>
           <Controls

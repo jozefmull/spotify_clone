@@ -97,6 +97,12 @@
         max-width: calc((100% / 5) - 8px);
         width: 100%;
     }
+    .card > a > div > .play_icon_wrapper {
+       transform: translateY(0px);
+       opacity: 1;
+       width: 40px;
+       height: 40px;
+   }
 }
 @media only screen and (max-width: 775px) {
     .card{
@@ -122,47 +128,3 @@
         width: 100%;
     }
 }
-/* @media only screen and (max-width: 750px) {
-    .card{
-        max-width: calc((100% / 4) - 10px);
-        width: 100%;
-    }
-}
-@media only screen and (max-width: 750px) {
-    .card{
-        max-width: calc((100% / 4) - 10px);
-        width: 100%;
-    }
-} */
-
-/* 
-@media only screen and (max-width: 990px) {
-    .card{   
-        width: 10rem;
-        max-width: 10rem;
-    }
-}
-
-@media only screen and (max-width: 678px) {
-    .card{   
-        width: 11rem;
-        max-width: 11rem;
-
-    }
-}
-
-@media only screen and (max-width: 600px) {
-    .card{   
-        width: 10.5rem;
-        max-width: 10.5rem;
-
-    }
-}
-
-@media only screen and (max-width: 395px) {
-    .card{   
-        width: 9rem;
-        max-width: 9rem;
-
-    }
-} */
