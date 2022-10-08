@@ -5,8 +5,8 @@
 .wrapper > .hero{
     padding: 7rem 2rem 2.5rem 2rem;
     height: fit-content;
-    background: rgb(84,84,84);
-    background: linear-gradient(180deg, rgba(84,84,84,1) 0%, rgba(44,44,44,1) 100%);
+    background: rgb(54,54,54);
+    background: linear-gradient(180deg, rgba(54,54,54,1) 0%, rgba(24,24,24,1) 100%);
     display: flex;
     align-items: flex-end;
     color: #fff;

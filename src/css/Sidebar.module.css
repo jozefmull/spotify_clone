@@ -1,3 +1,8 @@
+.sidebar{
+    background: rgb(8,8,8);
+    background: linear-gradient(0deg, rgba(8,8,8,1) 0%, rgba(0,0,0,1) 100%);
+    box-shadow: 2px 0px 10px rgb(0 0 0 / 60%);
+}
 @media only screen and (max-width: 876px) {
     .sidebar{
         display: none !important;

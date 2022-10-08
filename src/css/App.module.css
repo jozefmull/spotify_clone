@@ -1,5 +1,5 @@
 .app{
-    background: rgb(34,34,34);
-    background: linear-gradient(0deg, rgba(34,34,34,1) 0%, rgba(24,24,24,1) 100%);
+    background: rgb(22,22,22);
+    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(12,12,12,1) 100%);
     overflow-y: hidden;
 }

@@ -25,7 +25,7 @@ const NavLinks = ({handleClick, mobile}) => {
             style={({ isActive }) =>
                 !isActive ? styles.notactive : styles.active
             }
-            className="flex flex-row justify-start items-center my-3 text-sm font-bold text-gray-400 hover:text-white transition-all"
+            className="flex flex-row justify-start items-center my-3 text-sm font-bold text-gray-500 hover:text-white transition-all"
             onClick={mobile ? handleClick : undefined}
           >
             <link.icon className="w-7 h-7 mr-4" />

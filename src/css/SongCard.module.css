@@ -8,6 +8,7 @@
     cursor:pointer;
     max-width: calc((100% / 8) - 20px);
     width: 100%;
+    box-shadow: 0 1px 2px rgb(0 0 0 / 50%);
 }
 
 .card:hover{
@@ -17,7 +18,7 @@
     position: relative;
 }
 .card > a > div > img {
-    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 80%);
     border-radius: 5px;
 }
 .card > a > div > .play_icon_wrapper {
@@ -37,7 +38,7 @@
     justify-content: center;
     transform: translateY(10px);
     opacity: 0;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 80%);
 }
 .card > a > div > .play_icon_wrapper > .play_icon{
     width: 32px;
@@ -58,9 +59,11 @@
 
 .card h3{
     font-size: 0.95rem;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
 }
 .card span{
     font-size: 0.875rem;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
 }
 @media only screen and (max-width: 1800px) {
     .card{

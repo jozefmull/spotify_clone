@@ -4,6 +4,7 @@
     position: relative;
     overflow: hidden;
     border-radius:7px;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 80%);
 }
 .slide:hover{
     cursor: pointer;
@@ -16,19 +17,19 @@
     transition: all .3s ease;
     cursor: pointer;
     pointer-events: none;
+    text-shadow: 1px 1px 2px rgb(0 0 0 / 80%);
 }
 
 .slide > img{
     position: absolute;
-    width: auto;
-    height: 75px;
-    left: -5%;
+    left: -10px;
     bottom: -20px;
-    transform: rotate(-30deg);
+    width: 90px;
+    transform: rotate(-25deg);
     border-radius: 5px;
     transition: all .3s ease;
     pointer-events: none;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 50%);
+    box-shadow: 0 8px 24px rgb(0 0 0 / 80%);
 }
 
 .slide:hover > img{

@@ -53,7 +53,7 @@ const SongDetails = () => {
          alt="song-coverart" width={200} height={200}/>
         )}
         <div className='flex flex-col'>
-          <div className='relative max-w-[100px] min-h-[18px]'>
+          <div className='relative max-w-[100px] min-h-[18px] mt-2'>
             {loading && <Loader/>}
             {Object.keys(data).length !== 0 && !loading && <p className='animate-slideup font-bold text-md '>SONG</p>}
           </div>
@@ -68,9 +68,7 @@ const SongDetails = () => {
         </div>
       </div>
       <div className='text-white px-8 pt-8'>
-        {/* If we do not have music uri in actions then dont display this section at all Display just notification*/}
-        {data?.hub?.actions ? (
-          <div className={`${styles.controls_wrap} animate-slideup`}>
+        <div className={`${styles.controls_wrap} animate-slideup`}>
               {/* IF song is playing and activesong key is equal to current song details key display pause icon and vice versa */}
               {isPlaying && activeSong?.key === data?.key ? (
                 <MdPause className={styles.play_icon} onClick={() => dispatch({type: 'PLAY_PAUSE', payload: false})}/>
@@ -82,9 +80,6 @@ const SongDetails = () => {
                   <button className={styles.lyrics_btn} onClick={() => setopenModal(true)}>Lyrics</button>
               )}
           </div>
-        ) : (
-          <Notification type='error' message='Unfortunately we do not have audio for this song' title='Audio missing' />
-        )}
       </div>
       {/* if modal state open is true display modal */}
       {openModal && (

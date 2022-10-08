@@ -1,20 +1,21 @@
 .topbar{
-    background: rgb(11,11,11);
-    background: linear-gradient(135deg, rgba(11,11,11,1) 0%, rgba(44,44,44,1) 100%);
-    opacity: 0.97;
+    background: rgb(22,22,22);
+    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(40,40,40,1) 100%);
+    opacity: 0.95;
     z-index: 80;
     width: calc(100% - 250px);
     transition: all .3s ease;
-}
+    box-shadow: 0 3px 3px rgb(0 0 0 / 60%);
 
+}
 .topbar > .mobile_menu{
     position: fixed;
     top: 0px;
     left: 0px;
     right: 0px;
     padding: 60px 1rem 20px 1rem;
-    background: rgb(11,11,11);
-    background: linear-gradient(135deg, rgba(11,11,11,1) 0%, rgba(44,44,44,1) 100%);
+    background: rgb(22,22,22);
+    background: linear-gradient(0deg, rgba(22,22,22,1) 0%, rgba(40,40,40,1) 100%);
     z-index: -1;
     border-bottom: 1px solid rgb(107, 107, 107);
 }
@@ -27,11 +28,11 @@
     width: 34px;
     height: 34px;
     padding: 8px;
-    background-color: rgba(34,34,34,1);
-    
+    background-color: rgba(14,14,14,0.8);
     border-radius: 50%;
     cursor: pointer;
     transition: all .3s ease;
+    opacity: 1;
 }
 
 .arrowWrap > svg:first-child{
