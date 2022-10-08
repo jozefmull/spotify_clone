@@ -21,6 +21,7 @@
     margin-bottom: 7px;
     width: 40%;
     justify-content: space-between;
+    max-width: 200px;
 }
 .player_controls_buttons > svg{
     cursor: pointer;

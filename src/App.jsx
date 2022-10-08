@@ -22,7 +22,7 @@ const App = () => {
   const {isActive} = playerData
 
   return (
-    <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden`}>
+    <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden relative`}>
       <Notification type='info' message='This app uses Shazam-core API free tier' title='INFO!' closeAfter={20000}/>
       <Notification type='info' message='API calls are limited to 500 a month' title='INFO!' closeAfter={20000}/>
       {isActive && <Notification type='info' message='This app can play only song preview!' title='INFO!' closeAfter={20000}/>}
