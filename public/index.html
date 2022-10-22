@@ -3,12 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Music application created by Jozef Müller"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <meta name="title" content="Music App - Web Developer portfolio project"/>
+    <meta name="description" content="Music App built with React JS & Tailwind CSS created by Jozef Müller"/>
+    <meta property="author" content="Jozef Müller">
+    <meta name='keywords' content="web developer, portfolio project, portfolio, project, web developer portfolio project, music app, music, react project" />
+    <meta name="robots" content="index, follow"/>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="%PUBLIC_URL%/">
+    <meta property="og:title" content="Music App - Web Developer portfolio project">
+    <meta property="og:description" content="Music App built with React JS & Tailwind CSS created by Jozef Müller">
+    <!-- <meta property="og:image" content="https://firebasestorage.googleapis.com/v0/b/jozefmullportfolio.appspot.com/o/project_images%2Fjozef_mueller_portfolio.gif?alt=media&token=ff3d27a4-56d2-4b76-a4e3-bb0b15ce86ba"> -->
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="%PUBLIC_URL%/">
+    <meta property="twitter:title" content="Music App - Web Developer portfolio project">
+    <meta property="twitter:description" content="Music App built with React JS & Tailwind CSS created by Jozef Müller">
+    <!-- <meta property="twitter:image" content="https://firebasestorage.googleapis.com/v0/b/jozefmullportfolio.appspot.com/o/project_images%2Fjozef_mueller_portfolio.gif?alt=media&token=ff3d27a4-56d2-4b76-a4e3-bb0b15ce86ba"> -->
+    
+
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -38,25 +56,39 @@
         margin: 0.5rem;
         color: rgb(195, 195, 195);
       }
+      #page-loader{
+        position: absolute;
+        z-index: 1000;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateY(0);
+        background: rgb(32,32,32);
+        background: radial-gradient(circle, #333 0%, #1e1e1e 100%);
+        transition: transform 1s ease-in-out !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      #page-loader img{
+        max-width: 50px;
+        max-height: 50px;
+      }
+      .loader-hide{
+        transform: translateY(100%);
+      }
     </style>
-
   </head>
- 
   <body>
     <noscript>
       <h1>We ran into some problem. :(</h1>
       <h3>Try enabling JavaScript to run this app.</h4>
     </noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
+    <div id="root">
+      <div id="page-loader">
+        <img src='%PUBLIC_URL%/circloader.svg' alt="loader" width="100%" height="100%">
+      </div>
+    </div>
   </body>
 </html>

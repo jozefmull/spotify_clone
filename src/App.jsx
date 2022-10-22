@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import { GlobalContext } from './context/GlobalState'
 import {Routes, Route} from 'react-router-dom'
 
@@ -10,16 +10,20 @@ import Notification from './components/Notification'
 import Discover from './pages/Discover'
 import Search from './pages/Search'
 import AroundYou from './pages/AroundYou'
-// import TopArtists from './pages/TopArtists'
 import TopCharts from './pages/TopCharts'
 import SongDetails from './pages/SongDetails'
 import ArtistDetails from './pages/ArtistDetails'
 
 import styles from './css/App.module.css'
 
+const loader = document.getElementById('page-loader')
+const hideLoader = () => loader.classList.add('loader-hide');
+
 const App = () => {
   const {playerData} = useContext(GlobalContext)
   const {isActive} = playerData
+
+  useEffect(hideLoader, []);
 
   return (
     <div className={`${styles.app} h-screen max-w-screen flex overflow-hidden relative`}>
